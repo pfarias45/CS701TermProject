@@ -1,0 +1,13 @@
+#addRemove:hover {
+    transform: scale(1.1)
+}
+
+#moreInfo {
+    border: none;
+    background-color: transparent;
+}
+
+#pdf {
+    border: none;
+    background-color: transparent;
+}

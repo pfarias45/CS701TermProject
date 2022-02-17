@@ -1,0 +1,53 @@
+<div *ngIf="!user">
+  <p>You are a new user, please sign up!</p>
+  <button (click)="signUp()">Sign Up</button>
+</div>
+
+<div *ngIf="user">
+
+<h1>My Registered Courses 
+  <button *ngIf="regCourses.length>0" id="pdf" placement="right" ngbPopover="Download to PDF" triggers="mouseenter:mouseleave">
+  <svg role="button" (click)="openPDF()" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-arrow-down" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1h-2z"/>
+  <path fill-rule="evenodd" d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z"/>
+  </svg>
+  </button>
+</h1>
+
+<br>
+
+<p *ngIf="regCourses.length == 0">No registered courses on record.</p>
+
+<table id="coursework" *ngIf="regCourses.length>0" class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Requirement</th>
+        <th scope="col">Course Id</th>
+        <th scope="col">Course Name</th>
+        <th scope="col">Day/Time</th>
+        <th scope="col">Location</th>
+        <th scope="col">Term</th>   
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of regCourses">
+            <td scope="row">{{ course.requirement }}</td>
+            <td scope="row">{{ course.id }}</td>
+            <td scope="row">{{ course.name }}
+              <button id="moreInfo" type="button" ngbPopover="{{ course.description }}" 
+              triggers="mouseenter:mouseleave" popoverTitle="Course Description">...
+              </button>
+            </td>
+            <td scope="row">{{ course.dt }}</td>
+            <td scope="row">{{ course.location }}</td>
+            <td scope="row">{{ course.term }}</td>
+          <td scope="row">
+            <svg id="addRemove" role= "button" (click)="dropRegCourse(course)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+            </svg>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
