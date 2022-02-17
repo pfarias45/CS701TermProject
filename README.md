@@ -15,5 +15,5 @@ Bootstrap,
 NodeJS, 
 HTML5, 
 CSS, 
-TypeScript, 
+TypeScript
 ***
