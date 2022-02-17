@@ -2,7 +2,7 @@
 
 Project for CS 701 Rich Internet Application Development. 
 
-Name: Student Reg Tool
+Name: Student Reg Tool.
 
 Live app: https://studentregtool.web.app/
 
