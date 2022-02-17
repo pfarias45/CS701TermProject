@@ -1,0 +1,89 @@
+<div *ngIf="!user">
+  <p>You are a new user, please sign up!</p>
+  <button (click)="signUp()">Sign Up</button>
+</div>
+
+<div *ngIf="user">
+
+  <h1>My Saved Schedule</h1>
+
+<br>
+
+<table *ngIf="savedSchedule.length >0" class="table table-hover">
+  <thead class="table table-hover">
+    <tr>
+      <th scope="col">Requirement</th>
+      <th scope="col">Course Id</th>
+      <th scope="col">Course Name</th>
+      <th scope="col">Day/Time</th>
+      <th scope="col">Location</th>
+      <th scope="col">Term</th>   
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let course of savedSchedule" >
+      <td scope="row">{{ course.requirement }}</td>
+      <td scope="row">{{ course.id }}</td>
+      <td scope="row">{{ course.name }}
+        <button id="moreInfo" type="button" ngbPopover="{{ course.description }}" 
+        triggers="mouseenter:mouseleave" popoverTitle="Course Description">...
+        </button>
+      </td>
+      <td scope="row">{{ course.dt }}</td>
+      <td scope="row">{{ course.location }}</td>
+      <td scope="row">{{ course.term }}</td>
+      <td scope="row">
+        <svg id="addRemove" role= "button" (click)="removeSchedule(course)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+        </svg>
+    </tr>
+  </tbody>
+</table>
+<button [disabled]="disabled" (click)="register()">Register</button>
+
+<br>
+<br>
+
+<h1>Course Catalog</h1>
+
+<br>
+
+<div class="form-outline mb-4">
+  <input  type="search" [(ngModel)]="searchText" class="form-control" placeholder="Search by Course Id" id="searchBar">
+</div>
+
+<table class="table table-hover">
+  <thead class="table table-hover">
+    <tr>
+      <th scope="col">Requirement</th>
+      <th scope="col">Course Id</th>
+      <th scope="col">Course Name</th>
+      <th scope="col">Day/Time</th>
+      <th scope="col">Location</th>
+      <th scope="col">Term</th>   
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let course of courseList | filter: searchText">
+      <td scope="row">{{ course.requirement }}</td>
+      <td scope="row">{{ course.id }}</td>
+      <td scope="row">{{ course.name }}
+        <button id="moreInfo" type="button" ngbPopover="{{ course.description }}" 
+        triggers="mouseenter:mouseleave" popoverTitle="Course Description">...
+        </button>
+      </td>
+      <td scope="row">{{ course.dt }}</td>
+      <td scope="row">{{ course.location }}</td>
+      <td scope="row">{{ course.term }}</td>
+      <td scope="row">
+        <svg id="addRemove" role="button" (click)="addSchedule(course)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+        </svg>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
