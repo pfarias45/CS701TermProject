@@ -1,0 +1,30 @@
+<div *ngIf="!user">
+    <p>You are a new user, please sign up!</p>
+    <button (click)="signUp()">Sign Up</button>
+  </div>
+  
+<div *ngIf="user">
+    <table class="table table-hover">
+      <thead class="table table-hover">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="row">{{ user.name }}</td>
+          <td scope="row">{{ user.email }}</td>
+          <td scope="row">
+            <svg id="addRemove" role= "button" (click)="deleteUser()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+            </svg>
+        </tr>
+      </tbody>
+    </table>
+</div> 
+
+
+
+
